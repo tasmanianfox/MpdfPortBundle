@@ -19,7 +19,7 @@
         "symfony/yaml": "*",
         "symfony/browser-kit": "*",
         "symfony/security-bundle": "*",
-        "sensio/framework-extra-bundle": "*",
+        "sensio/framework-extra-bundle": "*"
     },
     "autoload": {
         "psr-0": { "TFox\\MpdfPortBundle": "" }
