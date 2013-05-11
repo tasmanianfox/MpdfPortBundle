@@ -1,84 +1,87 @@
- Installation
+ Installation using Composer
 ==============================================
-*  Add MpdfPortBundle repository to your deps file:
+1. Add a new line to your composer.json file:
 
-<pre><code>[MpdfPortBundle]
-    git=https://github.com/tasmanianfox/MpdfPortBundle.git
-    target=/bundles/TFox/Bundle/MpdfPortBundle
-</code></pre>
+"require": {
+		...
+        
+        "tfox/mpdf-port-bundle": "1.1.*@dev"
+}
 
-*  Run Vendors install utility in your Symfony2 directory:
+2. Run a command
+php composer.phar update
 
-<pre><code>php bin/vendors install</code></pre>
+3. Add a new line to app/AppKernel.php:
+$bundles = array(
+  ...
+  "tfox/mpdf-port-bundle": "1.1.*"
+)
 
-*  Register MpdfPortBundle's namespace in /app/autoload.php:
-
-<pre><code>$loader->registerNamespaces(array(
-    'TFox'  		=> __DIR__.'/../vendor/bundles'
-    /*
-     * Another declarations here
-     */
-));</code></pre>
-
-*  Register MpdfPortBundle in /app/AppKernel.php:
-
-<pre><code>
-public function registerBundles()
-    {
-        $bundles = array(
-            /*
-         	   * Another declarations here
-       	     */
-            new TFox\Bundle\MpdfPortBundle\MpdfPortBundle()
-        );
-    }
-</code></pre>
-
-*  Add a link to bundle in configuration file /app/config/config.yml:
-<pre><code>
-imports:
-&nbsp;&nbsp;&nbsp;&nbsp;#Another declarations here
-&nbsp;&nbsp;&nbsp;&nbsp;\- { resource: @MpdfPortBundle/Resources/config/services.yml }
-</code></pre>
-
-How to use
+ A Quick Start guide
 ==============================================
 
-To create an instance of mPDF class, call mpdfport service's method getMPdf():
+1. How to create a Response object
+
+This small example creates a PDF document with format A4 and portrait orientation:
 
 <pre><code>
-$mpdf = $this->get('mpdfport')->getMPdf();
+$mpdfService = $this->get('tfox.mpdfport');
+$html = "<html><head></head><body>Hello World!</body></html>";
+$response = $mpdfService->generatePdfResponse($html);
 </code></pre>
 
-Further information about mPDF class usage you can find on mPDF's manual page:
-http://mpdf1.com/manual/index.php
-
-
-Example
-==============================================
-Here is a small example of PDF file generation:
+2. Generate a variable with PDF content
+Sometimes it is necessary to get a variabe which content is PDF document. Obviously, you might generate a response from the previous example and then call a method:
 <pre><code>
-    /**
-     * Defining action inside some controller
-     * @Route("/document.pdf")
-     */
-    public function pdfAction() {
-    	//Obtaining an object of mPDF class
-    	$mpdf = $this->get('mpdfport')->getMPdf(); 
-    	 
-     //Declaration of PDF document's contents
-    	$html = "&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;Hello World!&lt;/body&gt;&lt;/html&gt;";
-    	//Writing contents into mPDF object
-    	$mpdf->WriteHTML($html, 0);
-    	//Receiving generated PDF document
-    	$content = $mpdf->Output('', 'S');
-    	
-	    /*
-       * Generation of response object, assigning content of respone and setting response's MIME-type to PDF
-       */
-    	$response = new Response();
-    	$response->setContent($content);
-    	$response->headers->set('Content-Type', 'application/pdf');
-    	return $response;
-    }
+$response->getContent()
+</code></pre>
+But there is a shorter way to get a raw content:
+<pre><code>
+$mpdfService = $this->get('tfox.mpdfport');
+$html = "<html><head></head><body>Hello World!</body></html>";
+$content = $mpdfService->generatePdf($html);
+</code></pre>
+
+3. How to get an instance of \mPDF class
+If you would like to work with mPDF class itself, you can use a getMpdf method:
+<pre><code>
+$mpdfService = $this->get('tfox.mpdfport');
+$mPDF = $mpdfService->getMpdf();
+</code></pre>
+
+Warning
+==============================================
+
+1. By default the bundle adds to constructor of mPDF class two attributes 'utf-8' and 'A4'. To turn off these options, use setAddDefaultConstructorArgs method:
+<pre><code>
+$mpdfService->setAddDefaultConstructorArgs(false);
+</code></pre>
+
+2. As the bundle inserts by default the first two arguments to mPDF constructor, additional constructor arguments should start from the 3rd argument (default_font_size).
+
+3. If setAddDefaultConstructorArgs(false) method is called, additional arguments for constructor should start from the first one (mode).
+
+ Additional arguments
+==============================================
+As the bundle uses methods of mPDF class, some additional parameters can be added to these methods. There are 3 mPDF methods used in the bundle:
+1. Constructor. Documentation: http://mpdf1.com/manual/index.php?tid=184
+2. WriteHTML. Documentation:  http://mpdf1.com/manual/index.php?tid=121
+3. Output. Documentation:  http://mpdf1.com/manual/index.php?tid=125
+
+To pass additional arguments, an array with arguments should be created:
+<pre><code>
+$arguments = array(
+	'constructorArgs' => array(), //Constructor arguments. Numeric array. Don't forget about points 2 and 3 in Warning section!
+	'writeHtmlMode' => null, //$mode argument for WriteHTML method
+	'writeHtmlInitialise' => null, //$mode argument for WriteHTML method
+	'writeHtmlClose' => null, //$close argument for WriteHTML method
+	'outputFilename' => null, //$filename argument for Output method
+	'outputDest' => null //$dest argument for Output method
+);
+</code></pre>
+It is NOT necessary to have all the keys in array.
+This array might be passed to the generatePdf and generatePdfResponse methods as the secund argument:
+<pre><code>
+$mpdfService->generatePdf($html, $arguments);
+$mpdfService->generatePdfResponse($html, $arguments);
 </code></pre>
