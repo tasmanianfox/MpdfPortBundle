@@ -22,9 +22,9 @@ $bundles = array(
 )
 </code></pre>
 
+
  A Quick Start guide
 ==============================================
-
 
 1. How to create a Response object
 This small example creates a PDF document with format A4 and portrait orientation:
@@ -52,6 +52,7 @@ If you would like to work with mPDF class itself, you can use a getMpdf method:
 $mpdfService = $this->get('tfox.mpdfport');
 $mPDF = $mpdfService->getMpdf();
 </code></pre>
+
 
 Warning
 ==============================================
