@@ -1,0 +1,10 @@
+2013-05-11 v. 1.1.0 Sergei Beljakov <sergei.beljakov@tfox.eu>
+
+	* The structure of a bundle is rebuilt.
+	* Added functions generatePdf and generatePdfResponse. Creation of Response class instance is not required anymore.
+	* Interaction between Symfony and mPdf is more flexible: more arguments might be passed to mPdf through the bundle.
+	* Added a support of Composer
+
+2012-07-20  v.1.0.0 Sergei Beljakov <sergei.beljakov@tfox.eu>
+
+	* The first version on MpdfPortBundle. Installation is available only with bin/vendors. This version is only able to return an instance of \mPDF class.
