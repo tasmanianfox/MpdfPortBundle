@@ -1,7 +1,6 @@
  Installation using Composer
 ==============================================
 1. Add a new line to your composer.json file:
-
 <pre><code>
 "require": {
 		...
