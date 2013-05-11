@@ -11,7 +11,9 @@
 </code></pre>
 
 2. Run a command
+<pre><code>
 php composer.phar update
+</code></pre>
 
 3. Add a new line to app/AppKernel.php:
 <pre><code>
