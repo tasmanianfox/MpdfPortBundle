@@ -25,10 +25,9 @@ $bundles = array(
  A Quick Start guide
 ==============================================
 
+
 1. How to create a Response object
-
 This small example creates a PDF document with format A4 and portrait orientation:
-
 <pre><code>
 $mpdfService = $this->get('tfox.mpdfport');
 $html = "<html><head></head><body>Hello World!</body></html>";
