@@ -1,6 +1,6 @@
  Installation using Composer
 ==============================================
-1. Add a new line to your composer.json file:
+* Add a new line to your composer.json file:
 <pre><code>
 "require": {
 		...
@@ -9,12 +9,12 @@
 }
 </code></pre>
 
-2. Run a command
+* Run a command
 <pre><code>
 php composer.phar update
 </code></pre>
 
-3. Add a new line to app/AppKernel.php:
+* Add a new line to app/AppKernel.php:
 <pre><code>
 $bundles = array(
   ...
