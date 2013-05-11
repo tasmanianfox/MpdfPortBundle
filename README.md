@@ -23,6 +23,7 @@ $bundles = array(
 </code></pre>
 
 
+
  A Quick Start guide
 ==============================================
 1. How to create a Response object
@@ -53,6 +54,7 @@ $mPDF = $mpdfService->getMpdf();
 </code></pre>
 
 
+
 Warning
 ==============================================
 1. By default the bundle adds to constructor of mPDF class two attributes 'utf-8' and 'A4'. To turn off these options, use setAddDefaultConstructorArgs method:
@@ -63,6 +65,8 @@ $mpdfService->setAddDefaultConstructorArgs(false);
 2. As the bundle inserts by default the first two arguments to mPDF constructor, additional constructor arguments should start from the 3rd argument (default_font_size).
 
 3. If setAddDefaultConstructorArgs(false) method is called, additional arguments for constructor should start from the first one (mode).
+
+
 
  Additional arguments
 ==============================================
