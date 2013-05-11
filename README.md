@@ -29,7 +29,7 @@ public function registerBundles()
             /*
          	   * Another declarations here
        	     */
-            	new TFox\Bundle\MpdfPortBundle\MpdfPortBundle()
+            new TFox\Bundle\MpdfPortBundle\MpdfPortBundle()
         );
     }
 </code></pre>

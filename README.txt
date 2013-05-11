@@ -27,7 +27,7 @@ public function registerBundles()
                /*
      		* Another declarations here
    	        */
-        	new TFox\Bundle\MpdfPortBundle\MpdfPortBundle()
+        	new TFox\MpdfPortBundle\MpdfPortBundle()
         );
 
 5. Add a link to bundle in configuration file /app/config/config.yml:
@@ -40,9 +40,9 @@ imports:
 How to use
 ==============================================
 
-To create an instance of mPDF class, call mpdfport service's method getMPdf():
+To create an instance of mPDF class, call mpdfport service's method getMpdf():
 
-$mpdf = $this->get('mpdfport')->getMPdf();
+$mpdf = $this->get('mpdfport')->getMpdf();
 
 Further information about mPDF class usage you can find on mPDF's manual page:
 http://mpdf1.com/manual/index.php
@@ -59,7 +59,7 @@ Here is a small example of PDF file generation:
      */
     public function pdfAction() {
 	//Obtaining an object of mPDF class
-    	$mpdf = $this->get('mpdfport')->getMPdf(); 
+    	$mpdf = $this->get('mpdfport')->getMpdf(); 
     	 
         //Declaration of PDF document's contents
     	$html = "<html><head></head><body>Hello World!</body></html>";
