@@ -2,20 +2,24 @@
 ==============================================
 1. Add a new line to your composer.json file:
 
+<pre><code>
 "require": {
 		...
         
         "tfox/mpdf-port-bundle": "1.1.*@dev"
 }
+</code></pre>
 
 2. Run a command
 php composer.phar update
 
 3. Add a new line to app/AppKernel.php:
+<pre><code>
 $bundles = array(
   ...
   "tfox/mpdf-port-bundle": "1.1.*"
 )
+</code></pre>
 
  A Quick Start guide
 ==============================================
