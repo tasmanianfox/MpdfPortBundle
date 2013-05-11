@@ -25,7 +25,6 @@ $bundles = array(
 
  A Quick Start guide
 ==============================================
-
 1. How to create a Response object
 This small example creates a PDF document with format A4 and portrait orientation:
 <pre><code>
@@ -56,7 +55,6 @@ $mPDF = $mpdfService->getMpdf();
 
 Warning
 ==============================================
-
 1. By default the bundle adds to constructor of mPDF class two attributes 'utf-8' and 'A4'. To turn off these options, use setAddDefaultConstructorArgs method:
 <pre><code>
 $mpdfService->setAddDefaultConstructorArgs(false);
