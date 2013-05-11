@@ -6,7 +6,7 @@
 "require": {
 		...
         
-        "tfox/mpdf-port-bundle": "1.1.*@dev"
+        "tfox/mpdf-port-bundle": "1.1.*"
 }
 </code></pre>
 
