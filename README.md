@@ -1,4 +1,4 @@
- Installation
+Installation
 ==============================================
 ### Using Composer (Symfony 2.1+)
 
@@ -41,7 +41,7 @@
 <pre><code>php bin/vendors install
 </code></pre>
 
- A Quick Start guide
+A Quick Start guide
 ==============================================
 * How to create a Response object
 This small example creates a PDF document with format A4 and portrait orientation:
@@ -68,7 +68,7 @@ $mPDF = $mpdfService->getMpdf();
 
 
 
- Warning
+Warning
 ==============================================
 * By default the bundle adds to constructor of mPDF class two attributes 'utf-8' and 'A4'. To turn off these options, use setAddDefaultConstructorArgs method:
 <pre><code>$mpdfService->setAddDefaultConstructorArgs(false);
@@ -80,7 +80,7 @@ $mPDF = $mpdfService->getMpdf();
 
 
 
- Additional arguments
+Additional arguments
 ==============================================
 As the bundle uses methods of mPDF class, some additional parameters can be added to these methods. There are 3 mPDF methods used in the bundle:
 * Constructor. Documentation: http://mpdf1.com/manual/index.php?tid=184
