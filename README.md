@@ -1,8 +1,9 @@
- Installation using Composer
+ Installation
 ==============================================
-* Add a new line to your composer.json file:
-<pre><code>
-"require": {
+### Using Composer (Symfony 2.1+)
+
+* Add a new line to your `composer.json` file:
+<pre><code>"require": {
 		...
         
         "tfox/mpdf-port-bundle": "1.1.*"
@@ -10,19 +11,35 @@
 </code></pre>
 
 * Run a command
-<pre><code>
-php composer.phar update
+<pre><code>php composer.phar update
 </code></pre>
 
-* Add a new line to app/AppKernel.php:
-<pre><code>
-$bundles = array(
+* Add a new line to `app/AppKernel.php`:
+<pre><code>$bundles = array(
   ...
   "tfox/mpdf-port-bundle": "1.1.*"
 )
 </code></pre>
 
+### Using deps-file (Symfony 2.0.x)
 
+* Add a new entry to your `deps` file:
+<pre><code>[TFoxMpdfPortBundle]
+    git=https://github.com/tasmanianfox/MpdfPortBundle.git
+    target=/bundles/TFox/MpdfPortBundle 
+</code></pre>
+
+* Add a new line to `app/AppKernel.php`:
+<pre><code>new TFox\MpdfPortBundle\TFoxMpdfPortBundle(), 
+</code></pre>
+
+* Add a new line to `app/autoload.php`:
+<pre><code>'TFox' => __DIR__.'/../vendor/bundles',
+</code></pre>
+
+* Run a command
+<pre><code>php bin/vendors install
+</code></pre>
 
  A Quick Start guide
 ==============================================
