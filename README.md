@@ -45,38 +45,33 @@
 ==============================================
 * How to create a Response object
 This small example creates a PDF document with format A4 and portrait orientation:
-<pre><code>
-$mpdfService = $this->get('tfox.mpdfport');
+<pre><code>$mpdfService = $this->get('tfox.mpdfport');
 $html = "<html><head></head><body>Hello World!</body></html>";
 $response = $mpdfService->generatePdfResponse($html);
 </code></pre>
 
 * Generate a variable with PDF content
 Sometimes it is necessary to get a variabe which content is PDF document. Obviously, you might generate a response from the previous example and then call a method:
-<pre><code>
-$response->getContent()
+<pre><code>$response->getContent()
 </code></pre>
 But there is a shorter way to get a raw content:
-<pre><code>
-$mpdfService = $this->get('tfox.mpdfport');
+<pre><code>$mpdfService = $this->get('tfox.mpdfport');
 $html = "<html><head></head><body>Hello World!</body></html>";
 $content = $mpdfService->generatePdf($html);
 </code></pre>
 
 * How to get an instance of \mPDF class
 If you would like to work with mPDF class itself, you can use a getMpdf method:
-<pre><code>
-$mpdfService = $this->get('tfox.mpdfport');
+<pre><code>$mpdfService = $this->get('tfox.mpdfport');
 $mPDF = $mpdfService->getMpdf();
 </code></pre>
 
 
 
-Warning
+ Warning
 ==============================================
 * By default the bundle adds to constructor of mPDF class two attributes 'utf-8' and 'A4'. To turn off these options, use setAddDefaultConstructorArgs method:
-<pre><code>
-$mpdfService->setAddDefaultConstructorArgs(false);
+<pre><code>$mpdfService->setAddDefaultConstructorArgs(false);
 </code></pre>
 
 * As the bundle inserts by default the first two arguments to mPDF constructor, additional constructor arguments should start from the 3rd argument (default_font_size).
@@ -93,8 +88,7 @@ As the bundle uses methods of mPDF class, some additional parameters can be adde
 * Output. Documentation:  http://mpdf1.com/manual/index.php?tid=125
 
 To pass additional arguments, an array with arguments should be created:
-<pre><code>
-$arguments = array(
+<pre><code>$arguments = array(
 	'constructorArgs' => array(), //Constructor arguments. Numeric array. Don't forget about points 2 and 3 in Warning section!
 	'writeHtmlMode' => null, //$mode argument for WriteHTML method
 	'writeHtmlInitialise' => null, //$mode argument for WriteHTML method
@@ -105,7 +99,6 @@ $arguments = array(
 </code></pre>
 It is NOT necessary to have all the keys in array.
 This array might be passed to the generatePdf and generatePdfResponse methods as the secund argument:
-<pre><code>
-$mpdfService->generatePdf($html, $arguments);
+<pre><code>$mpdfService->generatePdf($html, $arguments);
 $mpdfService->generatePdfResponse($html, $arguments);
 </code></pre>
