@@ -43,14 +43,14 @@ Installation
 
 A Quick Start guide
 ==============================================
-* How to create a Response object
+### How to create a Response object
 This small example creates a PDF document with format A4 and portrait orientation:
 <pre><code>$mpdfService = $this->get('tfox.mpdfport');
 $html = "<html><head></head><body>Hello World!</body></html>";
 $response = $mpdfService->generatePdfResponse($html);
 </code></pre>
 
-* Generate a variable with PDF content
+### Generate a variable with PDF content
 Sometimes it is necessary to get a variabe which content is PDF document. Obviously, you might generate a response from the previous example and then call a method:
 <pre><code>$response->getContent()
 </code></pre>
@@ -60,7 +60,7 @@ $html = "<html><head></head><body>Hello World!</body></html>";
 $content = $mpdfService->generatePdf($html);
 </code></pre>
 
-* How to get an instance of \mPDF class
+### How to get an instance of \mPDF class
 If you would like to work with mPDF class itself, you can use a getMpdf method:
 <pre><code>$mpdfService = $this->get('tfox.mpdfport');
 $mPDF = $mpdfService->getMpdf();
@@ -70,11 +70,11 @@ $mPDF = $mpdfService->getMpdf();
 
 Warning
 ==============================================
-* By default the bundle adds to constructor of mPDF class two attributes 'utf-8' and 'A4'. To turn off these options, use setAddDefaultConstructorArgs method:
+* By default the bundle adds the two attributes 'utf-8' and 'A4' to the mPDF class constructor. To turn off these options, use setAddDefaultConstructorArgs method:
 <pre><code>$mpdfService->setAddDefaultConstructorArgs(false);
 </code></pre>
 
-* As the bundle inserts by default the first two arguments to mPDF constructor, additional constructor arguments should start from the 3rd argument (default_font_size).
+* As the bundle inserts the first two arguments to mPDF constructor by default, additional constructor arguments should start from the 3rd argument (default_font_size).
 
 * If setAddDefaultConstructorArgs(false) method is called, additional arguments for constructor should start from the first one (mode).
 
