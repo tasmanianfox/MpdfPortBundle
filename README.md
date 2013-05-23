@@ -70,13 +70,13 @@ $mPDF = $mpdfService->getMpdf();
 
 Warning
 ==============================================
-* By default the bundle adds the two attributes 'utf-8' and 'A4' to the mPDF class constructor. To turn off these options, use setAddDefaultConstructorArgs method:
+* By default the bundle adds the two attributes 'utf-8' and 'A4' to the mPDF class constructor. To turn off these options, use the `setAddDefaultConstructorArgs` method:
 <pre><code>$mpdfService->setAddDefaultConstructorArgs(false);
 </code></pre>
 
-* As the bundle inserts the first two arguments to mPDF constructor by default, additional constructor arguments should start from the 3rd argument (default_font_size).
+* As the bundle inserts the first two arguments to the mPDF constructor by default, additional constructor arguments should start from the 3rd argument (default_font_size).
 
-* If setAddDefaultConstructorArgs(false) method is called, additional arguments for constructor should start from the first one (mode).
+* If the `setAddDefaultConstructorArgs(false)` method is called, additional arguments for constructor should start from the first one (mode).
 
 
 
@@ -98,7 +98,7 @@ To pass additional arguments, an array with arguments should be created:
 );
 </code></pre>
 It is NOT necessary to have all the keys in array.
-This array might be passed to the generatePdf and generatePdfResponse methods as the secund argument:
+This array might be passed to the `generatePdf` and `generatePdfResponse` methods as the second argument:
 <pre><code>$mpdfService->generatePdf($html, $arguments);
 $mpdfService->generatePdfResponse($html, $arguments);
 </code></pre>
