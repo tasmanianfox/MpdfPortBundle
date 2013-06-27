@@ -199,7 +199,15 @@ $this->fontdata = array(
 		'unAGlyphs' => true,
 		),
 
-
+/* IPA Japanese fonts */
+	// Gothic (sans-serif)
+	"paexg" => array(
+		'R' => "ipaexg.ttf"
+		),
+	// Mincho (serif)
+	"ipaexm" => array(
+		'R' => "ipaexm.ttf"
+		)
 
 
 /* Examples of some CJK fonts */
