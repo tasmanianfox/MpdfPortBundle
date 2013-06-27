@@ -95,9 +95,10 @@ function GetLangOpts($llcc, $adobeCJK) {
 			$unifonts = "sjis,sjisB,sjisI,sjisBI";
 		}
 /* Uncomment these lines if CJK fonts available */
-//		else {
-//			$unifonts = "sun-exta,sun-extb,hannoma,hannomb";
-//		}
+		else {
+			//$unifonts = "sun-exta,sun-extb,hannoma,hannomb";
+			$unifonts = "ipaexg,iapexm";
+		}
 		break;
 
 	  CASE "ko":  
