@@ -17,9 +17,11 @@ Installation
 * Add a new line to `app/AppKernel.php`:
 <pre><code>$bundles = array(
   ...
-  "tfox/mpdf-port-bundle": "1.1.*"
+  new TFox\MpdfPortBundle\TFoxMpdfPortBundle(),
 )
 </code></pre>
+
+
 
 ### Using deps-file (Symfony 2.0.x)
 
