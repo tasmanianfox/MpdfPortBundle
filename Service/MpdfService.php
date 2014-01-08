@@ -32,20 +32,20 @@ class MpdfService {
 	public function generatePdf($html, array $argOptions = array())
 	{
 		//Calculate arguments
-                $defaultOptions = array(
-                        'constructorArgs' => array(),
-                        'writeHtmlMode' => null,
-                        'writeHtmlInitialise' => null,
-                        'writeHtmlClose' => null,
-                        'outputFilename' => null,
-                        'outputDest' => null,
-                        'mpdf'=>null
-                );                
-                $options = array_merge($defaultOptions, $argOptions);
-                extract($options);
+		$defaultOptions = array(
+			'constructorArgs' => array(),
+			'writeHtmlMode' => null,
+			'writeHtmlInitialise' => null,
+			'writeHtmlClose' => null,
+			'outputFilename' => null,
+  			'outputDest' => null,
+			'mpdf'=>null
+		);                
+		$options = array_merge($defaultOptions, $argOptions);
+		extract($options);
 
-                if(null==$mpdf)
-                        $mpdf = $this->getMpdf($constructorArgs);
+		if(null==$mpdf)
+			$mpdf = $this->getMpdf($constructorArgs);
 		
 		//Add argguments to AddHtml function
 		$writeHtmlArgs = array($writeHtmlMode, $writeHtmlInitialise, $writeHtmlClose);
