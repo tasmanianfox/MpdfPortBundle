@@ -38,12 +38,14 @@ class MpdfService {
 			'writeHtmlInitialise' => null,
 			'writeHtmlClose' => null,
 			'outputFilename' => null,
-			'outputDest' => null
-		);		
+  			'outputDest' => null,
+			'mpdf'=>null
+		);                
 		$options = array_merge($defaultOptions, $argOptions);
 		extract($options);
-		
-		$mpdf = $this->getMpdf($constructorArgs);
+
+		if(null==$mpdf)
+			$mpdf = $this->getMpdf($constructorArgs);
 		
 		//Add argguments to AddHtml function
 		$writeHtmlArgs = array($writeHtmlMode, $writeHtmlInitialise, $writeHtmlClose);
