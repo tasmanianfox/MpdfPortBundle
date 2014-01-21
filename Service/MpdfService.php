@@ -2,7 +2,7 @@
 namespace TFox\MpdfPortBundle\Service;
 
 use Symfony\Component\HttpFoundation\Response;
-include_once __DIR__.'/../mpdf/mpdf.php';
+include_once __DIR__.'/../vendor/mpdf/mpdf/mpdf.php';
 
 
 class MpdfService {
