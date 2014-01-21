@@ -13,7 +13,7 @@
     ],
     "require": {
         "symfony/framework-bundle": "~2.1",
-	"mpdf/mpdf": "~5.7"
+		"mpdf/mpdf": "~5.7"
     },
     "require-dev": {
         "symfony/class-loader": "*",
