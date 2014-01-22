@@ -6,7 +6,7 @@ Installation
 <pre><code>"require": {
 		...
         
-        "tfox/mpdf-port-bundle": "1.1.*"
+        "tfox/mpdf-port-bundle": "1.2.*"
 }
 </code></pre>
 
