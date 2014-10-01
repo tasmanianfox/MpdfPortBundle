@@ -50,12 +50,12 @@ class MpdfService {
 		$writeHtmlArgs = array_filter($writeHtmlArgs, function($x) { return !is_null($x); });
 		$writeHtmlArgs['html'] = $html;
 		
-		call_user_func_array(array($mpdf, 'WriteHTML'), $writeHtmlArgs);
+		@call_user_func_array(array($mpdf, 'WriteHTML'), $writeHtmlArgs);
 		
 		//Add arguments to Output function
 		$outputArgs = array($outputFilename, $outputDest);
 		$outputArgs = array_filter($outputArgs, function($x) { return !is_null($x); });
-		$content = call_user_func_array(array($mpdf, 'Output'), $outputArgs);
+		$content = @call_user_func_array(array($mpdf, 'Output'), $outputArgs);
 		
 		return $content;
 	}
