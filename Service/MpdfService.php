@@ -36,8 +36,8 @@ class MpdfService {
 			'writeHtmlInitialise' => null,
 			'writeHtmlClose' => null,
 			'outputFilename' => null,
-  			'outputDest' => null,
-			'mpdf'=>null
+  			'outputDest' => 'S',
+			'mpdf' => null
 		);                
 		$options = array_merge($defaultOptions, $argOptions);
 		extract($options);
