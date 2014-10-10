@@ -35,7 +35,7 @@ class MpdfService {
 			'writeHtmlMode' => null,
 			'writeHtmlInitialise' => null,
 			'writeHtmlClose' => null,
-			'outputFilename' => null,
+			'outputFilename' => '',
   			'outputDest' => 'S',
 			'mpdf' => null
 		);                
@@ -53,10 +53,7 @@ class MpdfService {
 		@call_user_func_array(array($mpdf, 'WriteHTML'), $writeHtmlArgs);
 		
 		//Add arguments to Output function
-		$outputArgs = array($outputFilename, $outputDest);
-		$outputArgs = array_filter($outputArgs, function($x) { return !is_null($x); });
-		$content = @call_user_func_array(array($mpdf, 'Output'), $outputArgs);
-		
+        $content = $mpdf->Output($outputFileName, $outputDest);
 		return $content;
 	}
 	
