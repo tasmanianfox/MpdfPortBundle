@@ -53,7 +53,7 @@ class MpdfService {
 		@call_user_func_array(array($mpdf, 'WriteHTML'), $writeHtmlArgs);
 		
 		//Add arguments to Output function
-        $content = $mpdf->Output($outputFileName, $outputDest);
+        $content = $mpdf->Output($outputFilename, $outputDest);
 		return $content;
 	}
 	
