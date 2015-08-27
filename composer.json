@@ -16,7 +16,7 @@
 		"MIT"
 	],
 	"require" : {
-		"mpdf/mpdf" : ">=5.7",
+		"mpdf/mpdf" : "5.7.*",
 		"symfony/framework-bundle" : "~2.1"
 	},
 	"require-dev" : {
