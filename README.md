@@ -1,6 +1,6 @@
 Installation
 ==============================================
-### Using Composer (Symfony 2.*, Symfony 3.0.*)
+### Using Composer (Symfony 2.x, Symfony 3.0.x)
 
 * Add a new line to your `composer.json` file:
 <pre><code>"require": {
