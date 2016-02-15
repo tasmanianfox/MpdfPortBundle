@@ -1,12 +1,12 @@
 Installation
 ==============================================
-### Using Composer (Symfony 2.1+)
+### Using Composer (Symfony 2.*, Symfony 3.0.*)
 
 * Add a new line to your `composer.json` file:
 <pre><code>"require": {
 		...
         
-        "tfox/mpdf-port-bundle": "1.2.*"
+        "tfox/mpdf-port-bundle": "1.3.*"
 }
 </code></pre>
 
