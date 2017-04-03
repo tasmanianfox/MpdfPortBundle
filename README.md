@@ -88,6 +88,7 @@ As the bundle uses methods of mPDF class, some additional parameters can be adde
 * Constructor.
 * WriteHTML.
 * Output.
+
 You can view all documentation about this methods in official manual page: https://mpdf.github.io/
 
 To pass additional arguments, an array with arguments should be created:
