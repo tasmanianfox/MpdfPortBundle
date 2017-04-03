@@ -16,50 +16,54 @@ class MpdfService {
     public function getMpdf($constructorArgs = array()) 
     {
         $allConstructorArgs = $constructorArgs;
-	if($this->getAddDefaultConstructorArgs()) {
-	    $allConstructorArgs = array_merge(array('utf-8', 'A4'), $allConstructorArgs);
-	}		
+	    if($this->getAddDefaultConstructorArgs()) {
+	        $allConstructorArgs = array_merge(array('utf-8', 'A4'), $allConstructorArgs);
+	    }		
 
-	$reflection = new \ReflectionClass('\mPDF');
-	$mpdf = $reflection->newInstanceArgs($allConstructorArgs);
-	
-	return $mpdf;
+        $reflection = new \ReflectionClass('\mPDF');
+        $mpdf = $reflection->newInstanceArgs($allConstructorArgs);
+
+        return $mpdf;
     }	     
 	
     /**
      * Returns a string which content is a PDF document
+     * @param string $html Html content
+     * @param array $argOptions Options for the constructor.
+     *
+     * @return PDF file.
      */
     public function generatePdf($html, array $argOptions = array())
     {
         //Calculate arguments
-	$defaultOptions = array(
-	    'constructorArgs'      => array(),
-	    'writeHtmlMode'        => null,
-	    'writeHtmlInitialise'  => null,
-	    'writeHtmlClose'       => null,
-	    'outputFilename'       => '',
-  	    'outputDest'           => 'S',
-	    'mpdf'                 => null
-	);                
+        $defaultOptions = array(
+            'constructorArgs'      => array(),
+            'writeHtmlMode'        => null,
+            'writeHtmlInitialise'  => null,
+            'writeHtmlClose'       => null,
+            'outputFilename'       => '',
+            'outputDest'           => 'S',
+            'mpdf'                 => null
+        );                
 	
-	$options = array_merge($defaultOptions, $argOptions);
-	extract($options);
+        $options = array_merge($defaultOptions, $argOptions);
+        extract($options);
 
-	if(null==$mpdf) {
-		$mpdf = $this->getMpdf($constructorArgs);
-	}
-		
-	//Add argguments to AddHtml function
-	$writeHtmlArgs = array($writeHtmlMode, $writeHtmlInitialise, $writeHtmlClose);
-	$writeHtmlArgs = array_filter($writeHtmlArgs, function($x) { 
-		return !is_null($x); 
-	});
-	    
-	$writeHtmlArgs['html'] = $html;
-		
-	@call_user_func_array(array($mpdf, 'WriteHTML'), $writeHtmlArgs);
-	
-	//Add arguments to Output function
+        if (null == $mpdf) {
+            $mpdf = $this->getMpdf($constructorArgs);
+        }
+
+        //Add arguments to AddHtml function
+        $writeHtmlArgs = array($writeHtmlMode, $writeHtmlInitialise, $writeHtmlClose);
+        $writeHtmlArgs = array_filter($writeHtmlArgs, function($x) { 
+            return !is_null($x); 
+        });
+
+        $writeHtmlArgs['html'] = $html;
+
+        @call_user_func_array(array($mpdf, 'WriteHTML'), $writeHtmlArgs);
+
+        //Add arguments to Output function
         $content = $mpdf->Output($outputFilename, $outputDest);
 	
         return $content;
@@ -72,13 +76,13 @@ class MpdfService {
      */
     public function generatePdfResponse($html, array $argOptions = array())
     {
-	$response = new Response();		
-	$response->headers->set('Content-Type', 'application/pdf');
-		
-	$content = $this->generatePdf($html, $argOptions);
-	$response->setContent($content);
-	
-	return $response;
+        $response = new Response();		
+        $response->headers->set('Content-Type', 'application/pdf');
+
+        $content = $this->generatePdf($html, $argOptions);
+        $response->setContent($content);
+
+        return $response;
     }
 	
    /**
@@ -87,9 +91,9 @@ class MpdfService {
     */
     public function setAddDefaultConstructorArgs($val)
     {
- 	$this->addDefaultConstructorArgs = $val;
-
-	return $this;
+        $this->addDefaultConstructorArgs = $val;
+        
+        return $this;
     }
 	
    /**
@@ -97,6 +101,6 @@ class MpdfService {
     */
     public function getAddDefaultConstructorArgs()
     {
-	return $this->addDefaultConstructorArgs;
+	    return $this->addDefaultConstructorArgs;
     }
 }
