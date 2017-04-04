@@ -1,4 +1,4 @@
 CREDITS
 =============================
 The main component of this bundle, mPDF, was developed by Ian Back.
-mPDF webpage is http://www.mpdf1.com/
+mPDF webpage is https://mpdf.github.io/

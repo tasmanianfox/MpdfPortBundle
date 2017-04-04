@@ -85,9 +85,11 @@ Warning
 Additional arguments
 ==============================================
 As the bundle uses methods of mPDF class, some additional parameters can be added to these methods. There are 3 mPDF methods used in the bundle:
-* Constructor. Documentation: http://mpdf1.com/manual/index.php?tid=184
-* WriteHTML. Documentation:  http://mpdf1.com/manual/index.php?tid=121
-* Output. Documentation:  http://mpdf1.com/manual/index.php?tid=125
+* Constructor.
+* WriteHTML.
+* Output.
+
+You can view all documentation about this methods in official manual page: https://mpdf.github.io/
 
 To pass additional arguments, an array with arguments should be created:
 <pre><code>$arguments = array(
