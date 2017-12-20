@@ -1,5 +1,5 @@
 {
-	"name" : "pabloveintmilla/mpdf-port-bundle",
+	"name" : "pabloveintimilla/mpdf-port-bundle",
 	"description" : "A wrapper for mPDF class which allows to use mPDF in Symfony2 projects",
 	"type" : "symfony-bundle",
 	"authors" : [{
