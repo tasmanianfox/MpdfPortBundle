@@ -17,7 +17,7 @@ class MpdfService {
     {
         $allConstructorArgs = $constructorArgs;
 	    if($this->getAddDefaultConstructorArgs()) {
-	        $allConstructorArgs = arra(array_merge(array('utf-8', 'A4'), $allConstructorArgs));
+	        $allConstructorArgs = array(array_merge(array('utf-8', 'A4'), $allConstructorArgs));
 	    }		
 
         $reflection = new \ReflectionClass('Mpdf\Mpdf');
