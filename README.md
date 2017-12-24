@@ -2,16 +2,8 @@ Installation
 ==============================================
 ### Using Composer (Symfony 2.x, Symfony 3.0.x)
 
-* Add a new line to your `composer.json` file:
-<pre><code>"require": {
-		...
-        
-        "tfox/mpdf-port-bundle": "1.3.*"
-}
-</code></pre>
-
 * Run a command
-<pre><code>php composer.phar update
+<pre><code>composer require tfox/mpdf-port-bundle
 </code></pre>
 
 * Add a new line to `app/AppKernel.php`:
@@ -47,62 +39,32 @@ A Quick Start guide
 ==============================================
 ### How to create a Response object
 This small example creates a PDF document with format A4 and portrait orientation:
-<pre><code>$mpdfService = $this->get('tfox.mpdfport');
-$html = "<html><head></head><body>Hello World!</body></html>";
-$response = $mpdfService->generatePdfResponse($html);
+<pre><code>public function indexAction()
+{
+   return new \TFox\MpdfPortBundle\Response\PDFResponse($this->getMpdfService()->generatePdf('Hello World'));
+}
 </code></pre>
 
 ### Generate a variable with PDF content
-Sometimes it is necessary to get a variabe which content is PDF document. Obviously, you might generate a response from the previous example and then call a method:
-<pre><code>$response->getContent()
-</code></pre>
-But there is a shorter way to get a raw content:
-<pre><code>$mpdfService = $this->get('tfox.mpdfport');
-$html = "<html><head></head><body>Hello World!</body></html>";
-$content = $mpdfService->generatePdf($html);
+Sometimes it is necessary to get a variable which content is PDF document.
+<pre><code>$myVar = $this->getMpdfService()->generatePdf('Hello World');
 </code></pre>
 
 ### How to get an instance of \mPDF class
 If you would like to work with mPDF class itself, you can use a getMpdf method:
-<pre><code>$mpdfService = $this->get('tfox.mpdfport');
-$mPDF = $mpdfService->getMpdf();
-</code></pre>
+<pre><code>$mpdf = new \Mpdf\Mpdf();</code></pre>
 
-
-
-Warning
+Additional options
 ==============================================
-* By default the bundle adds the two attributes 'utf-8' and 'A4' to the mPDF class constructor. To turn off these options, use the `setAddDefaultConstructorArgs` method:
-<pre><code>$mpdfService->setAddDefaultConstructorArgs(false);
+Additional options might be passed via the second argument:
+
+<pre><code>public function indexAction()
+{
+    return new \TFox\MpdfPortBundle\Response\PDFResponse($this->getMpdfService()->generatePdf('Hello World', array(
+            'format' => 'A4-L' // A4 page, landscape orientation
+    )));
+}
 </code></pre>
 
-* As the bundle inserts the first two arguments to the mPDF constructor by default, additional constructor arguments should start from the 3rd argument (default_font_size).
+Detailed description is available on official manual page: https://mpdf.github.io/
 
-* If the `setAddDefaultConstructorArgs(false)` method is called, additional arguments for constructor should start from the first one (mode).
-
-
-
-Additional arguments
-==============================================
-As the bundle uses methods of mPDF class, some additional parameters can be added to these methods. There are 3 mPDF methods used in the bundle:
-* Constructor.
-* WriteHTML.
-* Output.
-
-You can view all documentation about this methods in official manual page: https://mpdf.github.io/
-
-To pass additional arguments, an array with arguments should be created:
-<pre><code>$arguments = array(
-	'constructorArgs' => array(), //Constructor arguments. Numeric array. Don't forget about points 2 and 3 in Warning section!
-	'writeHtmlMode' => null, //$mode argument for WriteHTML method
-	'writeHtmlInitialise' => null, //$mode argument for WriteHTML method
-	'writeHtmlClose' => null, //$close argument for WriteHTML method
-	'outputFilename' => null, //$filename argument for Output method
-	'outputDest' => null //$dest argument for Output method
-);
-</code></pre>
-It is NOT necessary to have all the keys in array.
-This array might be passed to the `generatePdf` and `generatePdfResponse` methods as the second argument:
-<pre><code>$mpdfService->generatePdf($html, $arguments);
-$mpdfService->generatePdfResponse($html, $arguments);
-</code></pre>
