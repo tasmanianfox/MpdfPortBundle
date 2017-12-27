@@ -43,6 +43,14 @@ This small example creates a PDF document with format A4 and portrait orientatio
 {
    return new \TFox\MpdfPortBundle\Response\PDFResponse($this->getMpdfService()->generatePdf('Hello World'));
 }
+
+/**
+ * @return \TFox\MpdfPortBundle\Service\PDFService
+ */
+private function getMpdfService()
+{
+  return $this->get('t_fox_mpdf_port.pdf');
+}
 </code></pre>
 
 ### Generate a variable with PDF content
