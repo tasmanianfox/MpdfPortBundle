@@ -16,8 +16,9 @@
 		"MIT"
 	],
 	"require" : {
-		"mpdf/mpdf" : ">=5.7",
-		"symfony/framework-bundle" : "~2.1"
+		"mpdf/mpdf" : "^7.0",
+		"symfony/framework-bundle" : ">=2.3",
+		"symfony/options-resolver": ">=2.3"
 	},
 	"require-dev" : {
 		"symfony/security-bundle" : "*",
@@ -34,7 +35,7 @@
 	"target-dir" : "TFox/MpdfPortBundle",
 	"extra" : {
 		"branch-alias" : {
-			"dev-master" : "1.2-dev"
+			"dev-master" : "2.0-dev"
 		}
 	}
 }
