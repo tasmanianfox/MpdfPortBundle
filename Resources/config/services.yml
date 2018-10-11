@@ -3,3 +3,8 @@ services:
         class: TFox\MpdfPortBundle\Service\PDFService
         arguments: ["%kernel.cache_dir%"]
         public: true
+
+    t_fox_mpdf_port.mpdf:
+        class: TFox\MpdfPortBundle\Service\MpdfService
+        arguments: ["%kernel.cache_dir%"]
+        public: true
