@@ -17,8 +17,10 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('t_fox_mpdf_port');
+        $treeBuilder = new TreeBuilder('t_fox_mpdf_port');
+        $rootNode = method_exists(TreeBuilder::class, 'getRootNode')
+            ? $treeBuilder->getRootNode()
+            : $treeBuilder->root('t_fox_mpdf_port');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
