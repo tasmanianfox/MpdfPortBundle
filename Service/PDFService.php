@@ -31,11 +31,13 @@ class PDFService {
     public function generatePdf($html, $options = array())
     {
         $resolver = new OptionsResolver();
-        $resolver->setDefaults(array(
-            'mode' => 'utf-8',
-            'format' => 'A4',
-            'tempDir' => $this->cacheDir
-        ));
+        $resolver
+            ->setDefined(array_keys($options))
+            ->setDefaults(array(
+                'mode' => 'utf-8',
+                'format' => 'A4',
+                'tempDir' => $this->cacheDir
+            ));
         $options = $resolver->resolve($options);
         $mpdf = new Mpdf($options);
         $mpdf->WriteHTML($html);
