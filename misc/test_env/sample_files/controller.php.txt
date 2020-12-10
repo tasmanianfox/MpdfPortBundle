@@ -1,0 +1,19 @@
+<?php
+namespace App\Controller;
+
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use TFox\MpdfPortBundle\Response\PDFResponse;
+use TFox\MpdfPortBundle\Service\PDFService;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class DefaultController extends AbstractController
+{
+    /**
+     * @Route("/test")
+     */
+    public function test(PDFService $pdfService): Response
+    {
+        return new PdfResponse($pdfService->generatePdf('Hello World'));
+    }
+}

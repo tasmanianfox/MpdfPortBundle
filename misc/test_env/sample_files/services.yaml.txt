@@ -1,0 +1,2 @@
+services:
+    TFox\MpdfPortBundle\Service\PDFService: '@t_fox_mpdf_port.pdf'
